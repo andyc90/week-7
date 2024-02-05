@@ -3,10 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Awesome Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        transition: background-color 0.5s ease;
+      }
+    </style>
   </head>
-  <body>
-    <h1>Home Page</h1>
-    <a href="awesome.html"><li>Awesome</li></a>
+  <body id="rick-roll-container">
+    <div id="rick-roll-content">
+      <h1 id="rick-roll-heading">Lets Party!</h1>
+      <button onclick="playVideo()">Click me if you're awesome!</button>
+      <iframe
+        width="560"
+        height="315"
+        src=""
+        frameborder="0"
+        allowfullscreen
+        id="rick-roll-iframe"
+      ></iframe>
+    </div>
   </body>
 </html>
