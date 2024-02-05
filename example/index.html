@@ -5,16 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Awesome Page</title>
     <link rel="stylesheet" href="style.css" />
-    <style>
-      body {
-        transition: background-color 0.5s ease;
-      }
-    </style>
   </head>
   <body id="rick-roll-container">
     <div id="rick-roll-content">
       <h1 id="rick-roll-heading">Lets Party!</h1>
-      <button onclick="playVideo()">Click me if you're awesome!</button>
+      <button id="awesomeButton">Click me if you're awesome!</button>
       <iframe
         width="560"
         height="315"
@@ -23,43 +18,9 @@
         allowfullscreen
         id="rick-roll-iframe"
       ></iframe>
-      <script>
-        const playVideo = () => {
-          const iframe = document.getElementById("rick-roll-iframe");
-          iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
 
-          hideElements();
-          changeBackgroundColor();
-        };
-
-        const hideElements = () => {
-          const heading = document.getElementById("rick-roll-heading");
-          const button = document.querySelector("button");
-
-          heading.style.display = "none";
-          button.style.display = "none";
-        };
-
-        const changeBackgroundColor = () => {
-          const colors = [
-            "red",
-            "orange",
-            "yellow",
-            "green",
-            "blue",
-            "indigo",
-            "violet",
-          ];
-          let index = 0;
-
-          const updateColor = () => {
-            document.body.style.backgroundColor = colors[index];
-            index = (index + 1) % colors.length;
-          };
-
-          setInterval(updateColor, 500);
-        };
-      </script>
+      <script src="script.js"></script>
+      <!-- <a href="awesome.html"><li>Link</li></a> -->
     </div>
   </body>
 </html>
