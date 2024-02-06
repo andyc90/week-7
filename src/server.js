@@ -86,7 +86,7 @@ app.delete("/books", (request, response) => {
   const index = fakeArr.indexOf(bookToDelete);
   fakeArr.splice(index, 1);
 
-  response.send({ message: "book has been deleted" });
+  response.send({ message: `${request.body.title} book has been deleted` });
 });
 
 // Start the server and listen on port 5001
