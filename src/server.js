@@ -97,7 +97,9 @@ app.put("/books", async (request, response) => {
       .status(200)
       .json({ message: "Author updated successfully." });
   } catch (error) {
-    return response.status(500).json({ message: "Error updating author." });
+    return response
+      .status(500)
+      .json({ message: "Error occured while updating author." });
   }
 });
 
