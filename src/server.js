@@ -1,3 +1,4 @@
+// Load environment variables from a .env file
 require("dotenv").config();
 
 // Import the Express framework
@@ -117,6 +118,26 @@ app.delete("/books", async (request, response) => {
     return response
       .status(500)
       .json({ message: "Error occurred while deleting the book." });
+  }
+});
+
+// Handle DELETE request to delete all books
+
+app.delete("/books/deleteall", async (request, response) => {
+  try {
+    const deletedBooks = await Book.deleteMany({});
+
+    if (!deletedBooks) {
+      return response.status(404).json({ message: "Book could not be found." });
+    }
+
+    return response
+      .status(200)
+      .json({ message: "All books have been deleted successfully." });
+  } catch (error) {
+    return response
+      .status(500)
+      .json({ message: "Error occurred while deleting all books." });
   }
 });
 
