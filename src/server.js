@@ -64,10 +64,17 @@ app.post("/books", async (request, response) => {
 });
 
 // Handle PUT request to update a book's author
-app.put("/books", (request, response) => {});
+app.put("/books", async (request, response) => {});
 
-// Handle DELETE request to delete a book
-app.delete("/books", (request, response) => {});
+// Handle DELETE request to delete a book by title
+app.delete("/books", async (request, response) => {
+  try {
+    const deletedBook = await Book.findOneAndDelete(request.body);
+    return response.status(200).json({ data: deletedBook });
+  } catch (error) {
+    return response.status(400).json(error);
+  }
+});
 
 // Start the server and listen on port 5001
 app.listen(5001, () => {
