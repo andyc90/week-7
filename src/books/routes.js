@@ -6,7 +6,7 @@ const {
   getAllBooks,
   deleteBook,
   getFirstBook,
-} = require("../controllers/bookControllers");
+} = require("./controller");
 const router = express.Router();
 
 router

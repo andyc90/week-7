@@ -4,7 +4,7 @@ require("dotenv").config();
 // Import the Express framework
 const express = require("express");
 const connection = require("./db/connection");
-const bookRoutes = require("./routes/bookRoutes");
+const bookRoutes = require("./books/routes");
 
 // Create an Express application
 const app = express();
