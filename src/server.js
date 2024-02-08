@@ -13,7 +13,7 @@ connection();
 // Use JSON to parse incoming JSON requests
 app.use(express.json());
 
-// Routes
+// Export the bookRoutes module
 app.use("/books", bookRoutes);
 
 // Start the server and listen on port 5001

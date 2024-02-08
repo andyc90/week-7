@@ -1,3 +1,4 @@
+// Imports the Book model from the ./model file.
 const Book = require("./model");
 
 // Handle GET request for all books
