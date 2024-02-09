@@ -5,11 +5,17 @@ const Book = require("./model");
 exports.getAllBooks = async (request, response) => {
   try {
     const books = await Book.find();
+    if (!books.length) {
+      console.log("Error");
+      return response.status(404).json({ message: "No books found." });
+    }
+    console.log("Success");
     return response.status(200).json({
       data: books,
       message: "All books have been successfully retrieved.",
     });
   } catch (error) {
+    console.error(error);
     return response
       .status(500)
       .json({ message: "Error occurred while retrieving books." });
@@ -24,14 +30,16 @@ exports.getFirstBook = async (request, response) => {
     const firstBook = books[0];
 
     if (!firstBook) {
+      console.log("Error");
       return response.status(404).json({ message: "Book not found." });
     }
-
+    console.log("Success");
     return response.status(200).json({
       data: firstBook,
       message: "First book retrieved successfully.",
     });
   } catch (error) {
+    console.log("Error");
     return response
       .status(500)
       .json({ message: "An error occurred while retrieving the first book." });
@@ -43,9 +51,11 @@ exports.getFirstBook = async (request, response) => {
 exports.addBook = async (request, response) => {
   try {
     await Book.create(request.body);
+    console.log("Success");
     return response.status(201).json({ message: "Book added successfully." });
   } catch (error) {
-    const errorMessage = "Error occurred while creating a new book.";
+    console.log("Error");
+    const errorMessage = "Book already exists.";
     return response.status(400).json({ message: errorMessage });
   }
 };
@@ -57,17 +67,19 @@ exports.updateAuthor = async (request, response) => {
     const book = await Book.findOne({ title: request.body.title });
 
     if (!book) {
+      console.log("Error");
       return response.status(404).json({ message: "Book could not be found." });
     }
 
     book.author = request.body.author;
 
     await book.save();
-
+    console.log("Success");
     return response
       .status(200)
       .json({ message: "Author updated successfully." });
   } catch (error) {
+    console.log("Error");
     return response
       .status(500)
       .json({ message: "Error occured while updating author." });
@@ -79,11 +91,13 @@ exports.deleteBook = async (request, response) => {
     const deletedBook = await Book.findOneAndDelete(request.body);
 
     if (!deletedBook) {
+      console.log("Error");
       return response.status(404).json({ message: "Book could not be found." });
     }
-
+    console.log("Success");
     return response.status(200).json({ message: "Book deleted successfully." });
   } catch (error) {
+    console.log("Error");
     return response
       .status(500)
       .json({ message: "Error occurred while deleting the book." });
@@ -97,13 +111,15 @@ exports.deleteAllBooks = async (request, response) => {
     const deletedBooks = await Book.deleteMany({});
 
     if (!deletedBooks) {
+      console.log("Error");
       return response.status(404).json({ message: "Book could not be found." });
     }
-
+    console.log("Success");
     return response
       .status(200)
       .json({ message: "All books have been deleted successfully." });
   } catch (error) {
+    console.log("Error");
     return response
       .status(500)
       .json({ message: "Error occurred while deleting all books." });
